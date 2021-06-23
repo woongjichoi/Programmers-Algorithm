@@ -1,0 +1,14 @@
+def solution(clothes):
+    d={}
+    answer=1
+    
+    for i in range(len(clothes)): # for i in clothes
+        if clothes[i][1] in d: # 딕셔너리에 키 있는지 검사 
+            d[clothes[i][1]]+=1
+        else: # else 안 붙이고 if랑 같은 라인에 넣으면 if문도 밑에 실행하는 것 
+            d[clothes[i][1]]=1
+    
+    for i in d.values(): # 딕셔너리명.values()
+        answer*=(i+1)
+    
+    return answer-1
