@@ -1,0 +1,7 @@
+def solution(array, commands):
+    answer = []
+    for i in range(len(commands)): # for command in commands 하면 더 가독성 좋은 코드 됨 
+        new_array=array[commands[i][0]-1:commands[i][1]] # 슬라이싱할 때 끝은 -1 해주면 안되는데 해서 계속 IndexError 났었음 
+        new_array.sort()
+        answer.append(new_array[commands[i][2]-1]) # 여기는 "세 번째"면 인덱스로는 2라서 -1 해줘야 하는데 안 해줬었음 
+    return answer
