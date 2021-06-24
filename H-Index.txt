@@ -1,0 +1,10 @@
+def solution(citations):
+    answer=0
+    citations.sort()
+    for citation in range(citations[-1],-1,-1): #입출력 예에서는 6부터 0까지
+        if citation in citations:
+            number=len(citations)-citations.index(citation)
+        if citation<=number:
+            answer=citation
+            break
+    return answer
