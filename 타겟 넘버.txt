@@ -1,0 +1,18 @@
+def solution(numbers, target):
+    # DFS, BFS 문제는 트리여야 함 
+    from collections import deque
+    answer=0
+    idx=0
+    queue=deque()
+    queue.append([numbers[0],0])
+    queue.append([-1*numbers[0],0])
+    while queue:
+        temp, idx=queue.popleft()
+        idx+=1
+        if idx<len(numbers):
+            queue.append([temp+numbers[idx],idx])
+            queue.append([temp-numbers[idx],idx])
+        else:
+            if temp==target:
+                answer+=1
+    return answer
