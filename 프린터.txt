@@ -1,0 +1,13 @@
+def solution(priorities, location):
+    from collections import deque
+    queue=deque([(v,i) for i, v in enumerate(priorities)])
+    orders=[]
+
+    while queue:
+        temp=queue.popleft()
+        if queue and temp[0]<max(queue)[0]:
+            queue.append(temp)
+        else:
+            orders.append(temp)
+            
+    return orders.index((priorities[location],location))+1
