@@ -1,0 +1,14 @@
+# 똑같은 코드여도 deque에서 popleft()하는 게 list에서 pop(0)하는 것보다 훨씬 빠름
+def solution(prices):
+    from collections import deque
+    answer=[]
+    queue=deque(prices)
+    while queue:
+        a=queue.popleft()
+        length=0
+        for price in queue: # queue가 empty일 때 처리해주지 않아도 오류 X
+            length+=1
+            if a>price:
+                break
+        answer.append(length)
+    return answer
