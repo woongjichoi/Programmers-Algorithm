@@ -1,0 +1,15 @@
+def solution(scoville, K):
+    import heapq
+    heapq.heapify(scoville)
+    answer=0
+    
+    while scoville:
+        first=heapq.heappop(scoville)
+        if first>=K:
+            return answer
+        if len(scoville)<1: # 힙이 비어있을 때 
+            return -1
+        second=heapq.heappop(scoville)
+        new=first+second*2
+        heapq.heappush(scoville, new)
+        answer+=1
