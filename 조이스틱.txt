@@ -1,0 +1,19 @@
+def solution(name):
+    answer=0
+    temp=100
+    alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    reverse_alphabet="ZYXWVUTSRQPONMLKJIHGFEDCBA"
+    
+    for i in name:
+        answer+=min(alphabet.index(i), reverse_alphabet.index(i)+1)
+        
+    for j in range(len(name)):
+        next=j+1
+        while next<len(name) and name[next]=='A':
+            next+=1
+        if min(len(name)-1, j+j+len(name)-next)<temp:
+            temp=min(len(name)-1, j+j+len(name)-next)
+        
+    answer+=temp
+        
+    return answer
