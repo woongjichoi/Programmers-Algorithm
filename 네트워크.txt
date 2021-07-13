@@ -1,0 +1,17 @@
+def solution(n, computers):
+    answer = 0
+    visited=[0]*n
+    from collections import deque # BFS 큐 일반 리스트로도 구현 가능 
+    queue=deque()
+    
+    while 0 in visited:
+        queue.append(visited.index(0)) # 큐에 인덱스 넣음 
+        while queue:
+            temp=queue.popleft()
+            visited[temp]=1
+            for i in range(n):
+                if computers[temp][i]==1 and visited[i]==0:
+                    queue.append(i)
+        answer+=1
+
+    return answer
