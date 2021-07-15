@@ -1,0 +1,20 @@
+def solution(n, edge):
+    # 인접 리스트 만들기
+    adj=[[] for _ in range(n+1)]
+    for e in edge:
+        adj[e[0]].append(e[1])
+        adj[e[1]].append(e[0])
+        
+    # BFS
+    from collections import deque
+    queue=deque()
+    queue.append([1,0])
+    visited=[-1]*n
+    visited[0]=0
+    while queue:
+        node, depth=queue.popleft()
+        for a in adj[node]:
+            if visited[a-1]==-1:
+                queue.append([a,depth+1])
+                visited[a-1]=depth+1
+    return visited.count(max(visited))
