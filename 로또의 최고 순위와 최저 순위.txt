@@ -1,0 +1,10 @@
+def solution(lottos, win_nums):
+    number=0
+    ranks={6:1,5:2,4:3,3:4,2:5,1:6,0:6}
+    for lotto in lottos:
+        if lotto in win_nums:
+            number+=1
+    low_rank=ranks[number]
+    number+=lottos.count(0)
+    high_rank=ranks[number]
+    return [high_rank,low_rank] 
