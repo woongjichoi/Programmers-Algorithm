@@ -1,0 +1,15 @@
+def solution(N, stages):
+    answer=[]
+    rates=[0]*N
+    temp=0
+    for i in range(N):
+        temp+=stages.count(i)
+        challengers=len(stages)-temp
+        if challengers==0:
+            rates[i]=0
+        else:
+            rates[i]=stages.count(i+1)/challengers
+    for k in range(len(rates)):
+        answer.append(rates.index(max(rates))+1)
+        rates[rates.index(max(rates))]=-1
+    return answer
