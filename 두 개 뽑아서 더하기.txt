@@ -1,0 +1,10 @@
+def solution(numbers):
+    answer=[]
+    from itertools import combinations
+    temp=list(combinations(numbers,2))
+    for t in temp:
+        s=sum(t)
+        if s not in answer:
+            answer.append(s)
+    answer.sort()
+    return answer
