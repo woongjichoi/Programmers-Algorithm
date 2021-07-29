@@ -1,0 +1,12 @@
+def solution(d, budget):
+    count=0
+    d.sort()
+    temp=0
+    if d[0]>budget:
+            return 0
+    for i in range(len(d)):
+        if temp+d[i]>budget:
+            break
+        temp+=d[i]
+        count=i
+    return count+1
