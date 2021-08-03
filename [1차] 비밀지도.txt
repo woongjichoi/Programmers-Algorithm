@@ -1,0 +1,27 @@
+def solution(n, arr1, arr2):
+    map1=[[0]*n for _ in range(n)]
+    map2=[[0]*n for _ in range(n)]
+    answer=[""]*n
+    for i in range(n):
+        a=arr1[i]
+        k=n-1
+        while a>=2:
+            map1[i][k]=a%2
+            a=a//2
+            k=k-1
+        map1[i][k]=a
+    for j in range(n):
+        a=arr2[j]
+        k=n-1
+        while a>=2:
+            map2[j][k]=a%2
+            a=a//2
+            k=k-1
+        map2[j][k]=a
+    for i in range(n):
+        for j in range(n):
+            if map1[i][j]==1 or map2[i][j]==1:
+                answer[i]+="#"
+            else:
+                answer[i]+=" "
+    return answer
