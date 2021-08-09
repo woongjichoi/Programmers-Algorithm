@@ -1,0 +1,24 @@
+def solution(scores):
+    answer=""
+    students=[[] for _ in range(len(scores))]
+    
+    for i in range(len(scores)):
+        for j in range(len(scores)):
+            students[i].append(scores[j][i])
+        if (max(students[i])==scores[i][i] and students[i].count(scores[i][i])==1) or (min(students[i])==scores[i][i] and students[i].count(scores[i][i])==1):
+            students[i].remove(scores[i][i])
+    
+    for i in range(len(students)):
+        avg=sum(students[i])/len(students[i])
+        if avg>=90:
+            answer+="A"
+        elif avg>=80 and avg<90:
+            answer+="B"
+        elif avg>=70 and avg<80:
+            answer+="C"
+        elif avg>=50 and avg<70:
+            answer+="D"
+        else:
+            answer+="F"
+    
+    return answer
