@@ -1,0 +1,16 @@
+def solution(s):
+    answer=''
+    up=[]
+    low=[]
+    for char in s:
+        if char.isupper()==True:
+            up.append(char)
+        elif char.islower()==True:
+            low.append(char)
+    up.sort(reverse=True)
+    low.sort(reverse=True)
+    for l in low:
+        answer+=l
+    for u in up:
+        answer+=u
+    return answer
