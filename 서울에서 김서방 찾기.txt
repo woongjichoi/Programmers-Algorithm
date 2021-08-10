@@ -1,0 +1,5 @@
+def solution(seoul):
+    # TypeError: can only concatenate str (not "int") to str
+    location=str(seoul.index("Kim"))
+    answer="김서방은 "+location+"에 있다"
+    return answer
