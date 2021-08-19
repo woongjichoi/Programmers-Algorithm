@@ -1,0 +1,12 @@
+def solution(s):
+    new_list=[]
+    words=s.split(" ") 
+    for word in words:
+        new_words=""
+        for i in range(len(word)):
+            if i%2==0:
+                new_words+=word[i].upper()
+            else:
+                new_words+=word[i].lower()
+        new_list.append(new_words)
+    return " ".join(new_list)
