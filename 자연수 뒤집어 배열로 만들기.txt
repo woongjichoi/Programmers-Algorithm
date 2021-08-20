@@ -1,0 +1,7 @@
+def solution(n):
+    answer=[]
+    new_list=list(str(n))
+    new_list.reverse()
+    for item in new_list:
+        answer.append(int(item))
+    return answer
