@@ -1,0 +1,8 @@
+def solution(s, n):
+    new_list=list(s)
+    for i in range(len(new_list)):
+        if new_list[i].isupper():
+            new_list[i]=chr(((ord(new_list[i])-ord("A")+n)%26)+ord("A"))
+        elif new_list[i].islower():
+            new_list[i]=chr(((ord(new_list[i])-ord("a")+n)%26)+ord("a"))
+    return "".join(new_list)
