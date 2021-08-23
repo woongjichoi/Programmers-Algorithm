@@ -1,0 +1,10 @@
+def solution(n):
+    answer=""
+    int_numbers=[]
+    str_numbers=list(str(n))
+    for number in str_numbers:
+        int_numbers.append(int(number))
+    int_numbers.sort(reverse=True)
+    for number in int_numbers:
+        answer+=str(number)
+    return int(answer)
