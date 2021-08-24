@@ -1,0 +1,7 @@
+def solution(n):
+    import math
+    k=math.sqrt(n)
+    if k%1==0:
+        return (k+1)*(k+1)
+    else:
+        return -1
