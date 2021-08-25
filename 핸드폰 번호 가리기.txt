@@ -1,0 +1,5 @@
+def solution(phone_number):
+    stars=phone_number[:-4]
+    for number in stars:
+        stars=stars.replace(number,"*")
+    return stars+phone_number[-4:]
