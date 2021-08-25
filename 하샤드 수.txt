@@ -1,0 +1,8 @@
+def solution(x):
+    numbers=[]
+    for item in list(str(x)):
+        numbers.append(int(item))
+    if x%sum(numbers)==0:
+        return True
+    else:
+        return False
