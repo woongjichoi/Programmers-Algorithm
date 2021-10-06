@@ -1,0 +1,9 @@
+def solution(w,h):
+    import math
+    box=0
+    gcd=math.gcd(w,h)
+    if gcd==1:
+        box=w+h-1
+    else:
+        box=gcd*((w//gcd)+(h//gcd)-1)
+    return w*h-box
