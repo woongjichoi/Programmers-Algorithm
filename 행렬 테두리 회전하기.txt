@@ -1,0 +1,30 @@
+def solution(rows, columns, queries):
+    answer=[]
+    numbers=[[0]*columns for _ in range(rows)]
+    for i in range(rows):
+        for j in range(columns):
+            numbers[i][j]=i*columns+(j+1)
+            
+    for query in queries:
+        t=numbers[query[0]-1][query[1]-1]
+        mini=t
+        for i in range(query[0]-1,query[2]-1): # 왼
+            temp=numbers[i+1][query[1]-1]
+            numbers[i][query[1]-1]=temp
+            mini=min(mini,temp)
+        for i in range(query[1]-1,query[-1]-1): # 아래
+            temp=numbers[query[2]-1][i+1]
+            numbers[query[2]-1][i]=temp
+            mini=min(mini,temp)
+        for i in range(query[2]-1,query[0]-1,-1): # 오
+            temp=numbers[i-1][query[-1]-1]
+            numbers[i][query[-1]-1]=temp
+            mini=min(mini,temp)
+        for i in range(query[-1]-1,query[1]-1,-1): # 위
+            temp=numbers[query[0]-1][i-1]
+            numbers[query[0]-1][i]=temp
+            mini=min(mini,temp)    
+        numbers[query[0]-1][query[1]]=t
+        answer.append(mini)
+        
+    return answer
