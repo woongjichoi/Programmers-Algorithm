@@ -1,0 +1,55 @@
+# u, v로 분리
+def divide(w):
+    temp=0
+    u=""
+    
+    for i in range(len(w)):
+            u+=w[i]
+            if w[i]=="(":
+                temp+=1
+            elif w[i]==")":
+                temp-=1
+            if temp==0:
+                break
+    if len(u)==len(w):
+        v=""
+    else:
+        v=w[i+1:]
+            
+    return u,v
+
+# 올바른 괄호 문자열인지
+def isBalanced(u):
+    stack=[]
+    for i in range(len(u)):
+        if u[i]=="(":
+            stack.append(u[i])
+        elif u[i]==")":
+            if len(stack)==0:
+                return False
+            else:
+                stack.pop()
+    if len(stack)==0:
+        return True
+    else:
+        return False
+    
+    
+def solution(p):
+    #1
+    if p=="":
+        return ""
+    #2
+    u,v=divide(p)
+    #3
+    if isBalanced(u)==True:
+        return u+solution(v)
+    #4
+    if isBalanced(u)==False:
+        answer="("+solution(v)+")"
+        for i in u[1:len(u)-1]:
+            if i=="(":
+                answer+=")"
+            elif i==")":
+                answer+="("
+        return answer
