@@ -1,0 +1,45 @@
+# https://eboong.tistory.com/328
+from collections import deque
+
+def check(place):
+    for i in range(5):
+        for j in range(5):
+            if place[i][j]=="P":
+                if bfs(place, i, j)==False:
+                    return 0
+    return 1
+
+def bfs(place, row, col):
+    queue=deque()
+    queue.append((row,col,0))
+    visited=[[0]*5 for _ in range(5)]
+    visited[row][col]=1
+    d=((-1,0),(1,0),(0,-1),(0,1))
+    while queue:
+        now=queue.popleft()
+        if now[2]>2:
+            continue
+        if now[2]!=0 and place[now[0]][now[1]]=="P":
+            return False
+        
+        for i in range(4):
+            nx=now[0]+d[i][0]
+            ny=now[1]+d[i][1]
+            if nx<0 or nx>4:
+                continue
+            if ny<0 or ny>4:
+                continue
+            if visited[nx][ny]==1:
+                continue
+            if place[nx][ny]=="X":
+                continue
+            visited[nx][ny]=1
+            queue.append((nx,ny,now[2]+1))
+    return True                
+        
+    
+def solution(places):
+    answer=[]
+    for place in places:
+        answer.append(check(place))
+    return answer
