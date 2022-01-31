@@ -1,3 +1,4 @@
+# 210629 풀이
 def solution(priorities, location):
     from collections import deque
     queue=deque([(v,i) for i, v in enumerate(priorities)])
@@ -11,3 +12,20 @@ def solution(priorities, location):
             orders.append(temp)
             
     return orders.index((priorities[location],location))+1
+
+# 220131 풀이 
+def solution(priorities, location):
+    queue=[]
+    printed=[]
+    for i in range(len(priorities)):
+        queue.append(chr(65+i)) # ["A", "B", "C", "D"]
+    target=queue[location] # "C"
+    while queue:
+        temp=queue.pop(0)
+        if priorities[0]!=max(priorities):
+            queue.append(temp)
+            priorities.append(priorities.pop(0))
+        else:
+            printed.append(temp)
+            del priorities[0]
+    return printed.index(target)+1
