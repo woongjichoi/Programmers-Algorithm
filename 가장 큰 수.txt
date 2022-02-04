@@ -1,21 +1,19 @@
 def solution(numbers):
-    # numbers가 [3, 30, 34, 5, 9]일 때 "9534330"이 아닌 "9534303"을 return하는 문제점 발생 
-    """
-    answer=''
-    numbers=list(map(str, numbers)) #숫자 리스트를 문자열로 바꾸기
-    numbers.sort()
-    for number in numbers[::-1]: #리스트 뒤에서부터 앞으로 접근할 때
-        answer+=number
-    return answer
-    """
-    
-    answer=''
+    """시간 초과 
+    from itertools import permutations
+    answer=0
+    candidates=list(permutations(numbers, len(numbers)))
+    for candidate in candidates:
+        temp=""
+        for c in candidate:
+            temp+=str(c)
+        if int(temp)>answer:
+            answer=int(temp)
+    return str(answer)"""
     numbers=list(map(str,numbers))
-    numbers.sort(key=lambda x:x*3, reverse=True) # 모든 원소가 3자리 이상
-    # ['0','0','0']일 때 "000" return하는 문제점 발생
-    """
+    numbers.sort(key=lambda x:x*3, reverse=True)
+    #print(numbers)
+    answer=""
     for number in numbers:
-        answer+=number 
-    """
-    answer=str(int(''.join(numbers)))
-    return answer
+        answer+=number
+    return str(int(answer))
