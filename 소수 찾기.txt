@@ -1,24 +1,18 @@
-def solution(numbers):
-    from itertools import permutations
-    answer=0
-    prime_numbers=[]
-    
-    def is_prime_number(n):
-        # 소수 판별: 2부터 (자기자신-1)까지 모두 나누어떨어지지 않아야 함
-        if n==0 or n==1:
+def is_prime_number(n):
+    if n==0 or n==1:
+        return False
+    for i in range(2,n):
+        if n%i==0:
             return False
-        for i in range(2, n):
-            if n%i==0: # 소수가 아님 
-                return False
-        return True
-        
-    for i in range(1, len(numbers)+1):
-        #l.append(list(permutations(numbers,i))) # [[('1',), ('7',)], [('1', '7'), ('7', '1')]]
-        arr=list(permutations(numbers,i))
-        for number in arr:
-            number=int(''.join(number))
-            if is_prime_number(number)==True and number not in prime_numbers:
-                prime_numbers.append(number)
-                answer+=1
-                
-    return answer
+    return True        
+    
+def solution(numbers):
+    prime_numbers=[]
+    from itertools import permutations
+    for i in range(len(numbers)):
+        temp=list(permutations(numbers,i+1))
+        for t in temp:
+            candidate=int("".join(t))
+            if is_prime_number(candidate)==True and candidate not in prime_numbers:
+                prime_numbers.append(candidate)
+    return len(prime_numbers)
